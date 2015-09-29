@@ -1,0 +1,17 @@
+database:
+  image: mysql:5.6
+  env_file:
+    - passwords.env
+  environment:
+    MYSQL_DATABASE: mirigata_db
+    MYSQL_USER: mirigata
+
+mirigata:
+  image: mirigata/mirigata:latest
+  links:
+    - database:mirigata_db
+  ports:
+    - "8080:8000"
+  env_file:
+    - passwords.env
+
